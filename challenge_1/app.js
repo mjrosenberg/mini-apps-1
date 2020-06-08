@@ -2,10 +2,11 @@ const squares = document.getElementById('tictactoe');
 const button = document.getElementById('reset');
 var XMove = true;
 var squaresFilled = 0;
+var gameOver = false;
 console.log(squares);
 var modifyText = (event) =>{
   //console.dir(event.target.innerText);
-  if (event.target.innerText === ''){
+  if (event.target.innerText === '' && gameOver === false){
     if (XMove === true) {
       event.target.innerText = 'X';
     } else{
@@ -53,44 +54,51 @@ var checkPosDiagonal = (letter) =>{
 }
 var checkBoard = (event)=>{
   //after each click we should check the board to see if a win has occurred or it is full
-  var id = event.target.id;
-  var letter = event.target.innerText;
-  var row = id[0];
-  var col = id[1];
-  if (checkRow(row, letter) === true){
-    //display winning message and return out of the function
-    document.getElementById('ending').innerText = letter + ' wins!';
-    return;
-  }
-  if (checkCol(col, letter) === true){
-    //display winning message and return out of the function
-    document.getElementById('ending').innerText = letter + ' wins!';
-    return;
-  }
-  if (id === '11'|| id === '22'|| id === '33'){
-    if (checkNegDiagonal(letter) === true){
+  if (gameOver === false){
+    var id = event.target.id;
+    var letter = event.target.innerText;
+    var row = id[0];
+    var col = id[1];
+    if (checkRow(row, letter) === true){
       //display winning message and return out of the function
       document.getElementById('ending').innerText = letter + ' wins!';
+      gameOver= true;
       return;
     }
-  }
-  if (id === '13'|| id === '22'|| id === '31'){
-    if (checkPosDiagonal(letter) === true){
+    if (checkCol(col, letter) === true){
       //display winning message and return out of the function
       document.getElementById('ending').innerText = letter + ' wins!';
+      gameOver= true;
       return;
     }
-  }
-  if (squaresFilled === 9){
-    //display the tie message and return out of the function
-    document.getElementById('ending').innerText = 'It\'s a tie! The board is full';
-    return;
-  }
-  if (letter === "X"){
-    document.getElementById('ending').innerText = 'O\'s turn';
-  }
-  if (letter === "O"){
-    document.getElementById('ending').innerText = 'X\'s turn';
+    if (id === '11'|| id === '22'|| id === '33'){
+      if (checkNegDiagonal(letter) === true){
+        //display winning message and return out of the function
+        document.getElementById('ending').innerText = letter + ' wins!';
+        gameOver= true;
+        return;
+      }
+    }
+    if (id === '13'|| id === '22'|| id === '31'){
+      if (checkPosDiagonal(letter) === true){
+        //display winning message and return out of the function
+        document.getElementById('ending').innerText = letter + ' wins!';
+        gameOver= true;
+        return;
+      }
+    }
+    if (squaresFilled === 9){
+      //display the tie message and return out of the function
+      document.getElementById('ending').innerText = 'It\'s a tie! The board is full';
+      gameOver= true;
+      return;
+    }
+    if (letter === "X"){
+      document.getElementById('ending').innerText = 'O\'s turn';
+    }
+    if (letter === "O"){
+      document.getElementById('ending').innerText = 'X\'s turn';
+    }
   }
 }
 var reset = (event) => {
@@ -104,6 +112,7 @@ var reset = (event) => {
   document.getElementById('ending').innerText = 'X\'s turn';
   XMove = true;
   squaresFilled = 0;
+  gameOver = false;
 }
 squares.addEventListener("click", modifyText, false);
 squares.addEventListener("click", checkBoard, false);
