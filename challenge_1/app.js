@@ -58,31 +58,31 @@ var checkBoard = (event)=>{
   var col = id[1];
   if (checkRow(row, letter) === true){
     //display winning message and return out of the function
-    console.log(letter,'wins');
+    document.getElementById('ending').innerText = letter + ' wins!';
     return;
   }
   if (checkCol(col, letter) === true){
     //display winning message and return out of the function
-    console.log(letter,'wins');
+    document.getElementById('ending').innerText = letter + ' wins!';
     return;
   }
   if (id === '11'|| id === '22'|| id === '33'){
     if (checkNegDiagonal(letter) === true){
       //display winning message and return out of the function
-      console.log(letter,'wins');
+      document.getElementById('ending').innerText = letter + ' wins!';
       return;
     }
   }
   if (id === '13'|| id === '22'|| id === '31'){
     if (checkPosDiagonal(letter) === true){
       //display winning message and return out of the function
-      console.log(letter,'wins');
+      document.getElementById('ending').innerText = letter + ' wins!';
       return;
     }
   }
   if (squaresFilled === 9){
     //display the tie message and return out of the function
-    console.log('the board is full and there is no winner');
+    document.getElementById('ending').innerText = 'It\'s a tie! The board is full';
     return;
   }
 }
