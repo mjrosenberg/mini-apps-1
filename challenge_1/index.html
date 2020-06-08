@@ -2,11 +2,59 @@
   <!-- maybe need a class within the html script -->
   <head>
     <style>
-      td{
-        border: 1px solid black;
-        width: 80px;
-        height: 80px;
+      body{
+        background-color:goldenrod;
       }
+      td{
+        border: 2px solid white;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        font-size: xx-large;
+      }
+      table{
+        background-color: seagreen;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom: 30px;
+        font-size: x-large;
+      }
+      #reset{
+        margin-left:46%;
+        margin-bottom: 10px;
+        color:black;
+        font-size: large;
+      }
+      #winner{
+        text-align: center;
+        margin-bottom: 30px;
+        color:maroon;
+        font-size: xx-large;
+      }
+      #ending{
+        text-align: center;
+        margin-bottom: 10px;
+        color:black;
+        font-size: x-large;
+      }
+      #tally{
+        background-color: seagreen;
+        text-align: center;
+        width : 20%;
+        height: 20%;
+        border: 3px solid black;
+        color:white;
+        font-size: large;
+      }
+      .score{
+        text-align: left;
+        margin-left:5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        color:white;
+        font-size: x-large;
+      }
+
     </style>
   </head>
   <body>
@@ -17,12 +65,11 @@
       <input type='text' id='oname' name='oname'>
     </form>
     <button id='submit'>Submit Players</button>
+    <div id='winner'>Reigning Champion: To Be Decided</div>
     <table id='tictactoe'>
       <caption>Tic Tac Toe</caption>
       <tbody>
         <tr>
-          <!-- one row of tic tac toe board -->
-          <!-- each td is a data cell that needs to change on a click -->
           <td class='square' id='11'></td>
           <td class='square' id='12'></td>
           <td class='square' id='13'></td>
@@ -41,11 +88,10 @@
     </table>
     <div id='ending'>X's turn</div>
     <button id='reset'>Reset Game</button>
-    <div id='winner'></div>
     <div id='tally'>
       Scoreboard
-      <div id='xtally'>X: 0</div>
-      <div id='otally'>O: 0</div>
+      <div class='score' id='xtally'>X: 0</div>
+      <div class='score' id='otally'>O: 0</div>
     </div>
     <script src="app.js"></script>
 
