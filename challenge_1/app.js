@@ -3,7 +3,6 @@ const button = document.getElementById('reset');
 var XMove = true;
 var squaresFilled = 0;
 var gameOver = false;
-console.log(squares);
 var modifyText = (event) =>{
   //console.dir(event.target.innerText);
   if (event.target.innerText === '' && gameOver === false){
@@ -114,6 +113,10 @@ var reset = (event) => {
   squaresFilled = 0;
   gameOver = false;
 }
-squares.addEventListener("click", modifyText, false);
-squares.addEventListener("click", checkBoard, false);
+// squares.addEventListener("click", modifyText, false);
+// squares.addEventListener("click", checkBoard, false);
+squares.addEventListener('click', (event)=>{
+  modifyText(event);
+  checkBoard(event);
+}, false);
 button.addEventListener("click", reset, false);
