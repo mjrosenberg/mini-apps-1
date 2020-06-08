@@ -1,4 +1,5 @@
 const squares = document.getElementById('tictactoe');
+const button = document.getElementById('reset');
 var XMove = true;
 var squaresFilled = 0;
 console.log(squares);
@@ -86,11 +87,24 @@ var checkBoard = (event)=>{
     return;
   }
   if (letter === "X"){
-    document.getElementById('ending').innerText =  'O\'s turn';
+    document.getElementById('ending').innerText = 'O\'s turn';
   }
   if (letter === "O"){
-    document.getElementById('ending').innerText =  'X\'s turn';
+    document.getElementById('ending').innerText = 'X\'s turn';
   }
+}
+var reset = (event) => {
+  //squares.innerText = '';
+  for (var row = 1; row<4; row++){
+    for (var col =1 ; col<4; col++){
+      var id = String(row) + String(col);
+      document.getElementById(id).innerText = '';
+    }
+  }
+  document.getElementById('ending').innerText = 'X\'s turn';
+  XMove = true;
+  squaresFilled = 0;
 }
 squares.addEventListener("click", modifyText, false);
 squares.addEventListener("click", checkBoard, false);
+button.addEventListener("click", reset, false);
