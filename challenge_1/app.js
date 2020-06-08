@@ -1,7 +1,7 @@
-const squares = document.querySelectorAll('td');
+const squares = document.getElementById('tictactoe');
 console.log(squares);
-for (square of squares) {
-  square.addEventListener('click',(event) =>{
-    console.log('event listener working', square.attributes);
-  });
+modifyText = (event) =>{
+  //console.dir(event.target.innerText);
+  event.target.innerText = 'X';
 }
+squares.addEventListener("click", modifyText, false);
