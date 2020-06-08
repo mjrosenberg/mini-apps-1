@@ -3,6 +3,9 @@ const button = document.getElementById('reset');
 var XMove = true;
 var squaresFilled = 0;
 var gameOver = false;
+var winner = '';
+var count = {X: 0, O: 0};
+//if (winner === 'X')
 var modifyText = (event) =>{
   //console.dir(event.target.innerText);
   if (event.target.innerText === '' && gameOver === false){
@@ -62,12 +65,16 @@ var checkBoard = (event)=>{
       //display winning message and return out of the function
       document.getElementById('ending').innerText = letter + ' wins!';
       gameOver= true;
+      winner = letter;
+      count[letter]++;
       return;
     }
     if (checkCol(col, letter) === true){
       //display winning message and return out of the function
       document.getElementById('ending').innerText = letter + ' wins!';
       gameOver= true;
+      winner = letter;
+      count[letter]++;
       return;
     }
     if (id === '11'|| id === '22'|| id === '33'){
@@ -75,6 +82,8 @@ var checkBoard = (event)=>{
         //display winning message and return out of the function
         document.getElementById('ending').innerText = letter + ' wins!';
         gameOver= true;
+        winner = letter;
+        count[letter]++;
         return;
       }
     }
@@ -83,6 +92,8 @@ var checkBoard = (event)=>{
         //display winning message and return out of the function
         document.getElementById('ending').innerText = letter + ' wins!';
         gameOver= true;
+        winner = letter;
+        count[letter]++;
         return;
       }
     }
@@ -108,8 +119,18 @@ var reset = (event) => {
       document.getElementById(id).innerText = '';
     }
   }
-  document.getElementById('ending').innerText = 'X\'s turn';
-  XMove = true;
+  document.getElementById('ending').innerText = winner + '\'s turn';
+  document.getElementById('winner').innerText =  'Reigning Champion: ' + winner;
+  //add a tally for x and o
+  if (winner === 'X'){
+    count.x++
+    document.getElementById('xtally').innerText = 'X: ' + count.X;
+    XMove = true;
+  } else{
+    count.o++
+    document.getElementById('otally').innerText =  'O: ' + count.O;
+    XMove = false;
+  }
   squaresFilled = 0;
   gameOver = false;
 }
