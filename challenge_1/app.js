@@ -112,10 +112,10 @@ var checkBoard = (event)=>{
       return;
     }
     if (letter === "X"){
-      document.getElementById('ending').innerText = playerO + '\'s turn';
+      document.getElementById('ending').innerText = gameState.playerO + '\'s turn';
     }
     if (letter === "O"){
-      document.getElementById('ending').innerText = playerX + '\'s turn';
+      document.getElementById('ending').innerText = gameState.playerX + '\'s turn';
     }
   }
 }
