@@ -85,6 +85,12 @@ var checkBoard = (event)=>{
     document.getElementById('ending').innerText = 'It\'s a tie! The board is full';
     return;
   }
+  if (letter === "X"){
+    document.getElementById('ending').innerText =  'O\'s turn';
+  }
+  if (letter === "O"){
+    document.getElementById('ending').innerText =  'X\'s turn';
+  }
 }
 squares.addEventListener("click", modifyText, false);
 squares.addEventListener("click", checkBoard, false);
