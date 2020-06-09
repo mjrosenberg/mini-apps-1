@@ -1,9 +1,11 @@
 <html>
   <head></head>
   <body>
-    <form action="/submit" method="post" class='jsonInput'>
+    <form action="/submit" method="post" class='jsonInput' enctype="multipart/form-data" >
+
       <label for='jsonObj'>JSON Object to be Converted:</label>
-      <input type='text' name='jsonObj' id='jsonObj' />
+      <input type='file' name='jsonObj' id='jsonObj' accept="application/JSON" />
+      <!-- <input type='text' name='jsonObj' id='jsonObj' /> -->
       <input id='submit' type='submit' />
     </form>
     <div id='csv'></div>
