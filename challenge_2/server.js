@@ -42,10 +42,9 @@ var transformToCSV = (jsonObj) => {
 app.post('/submit',(req, res)=>{
   var jsonObj = req.body.jsonObj;
   console.log(req.body);
-  //req.body.jsonObj contains the values submitted to the form
-  //need to return a csv version of that
   var csv = transformToCSV(jsonObj);
-  //need to send back a new html page with the csv report and form, but first I'll focus on just converting the json to csv
+  //csv has a correct csv in it with the given data but now the response needs to be fixed
+  //need to send back a new html page with the csv report and form
   res.status(200).send(csv);
 
 });
