@@ -1,4 +1,3 @@
-//const clientApp = require('./client/app');
 const express = require('express');
 const fs = require('fs');
 const formidable = require('formidable')
