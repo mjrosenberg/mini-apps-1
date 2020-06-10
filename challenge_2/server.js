@@ -23,16 +23,17 @@ var transformToCSV = (jsonObj) => {
     if (key !== 'children'){
       csv= csv +key+',';
     } else{
-      csv= csv.substring(0,csv.length-1) + '\n';
+      csv= csv.substring(0,csv.length-1);
+      csv += '\n';
     }
   }
   var transform = (obj) => {
-    //var keys = Object.keys(obj);
-    //console.log('key list', keys);
     for (key of keys){
       if (obj[key] !== undefined){
         if (key === 'children'){
-          csv = csv.substring(0,csv.length-1) +'\n'
+          csv= csv.substring(0,csv.length-1);
+          csv += '\n';
+          //idk why on my webpage it's only displaying a space and not a new line
           for (child of obj[key]){
             transform(child);
           }
