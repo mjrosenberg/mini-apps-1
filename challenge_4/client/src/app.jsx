@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import Board from './components/Board.jsx';
 
 
@@ -35,10 +35,5 @@ class App extends React.Component {
   }
 }
 //display this onto the DOM
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+
 export default App;
