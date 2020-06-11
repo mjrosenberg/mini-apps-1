@@ -1,0 +1,20 @@
+{
+  "name": "challenge_3",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "babel": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.10.1",
+    "express": "^4.17.1"
+  },
+  "author": "max",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "babel-watch": "^7.0.0"
+  }
+}
