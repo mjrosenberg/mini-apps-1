@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import Board from '/components/Board';
+import ReactDOM from 'react-dom';
+import Board from './components/Board.jsx';
 
 
 class App extends React.Component {
@@ -15,8 +15,7 @@ class App extends React.Component {
         4: 0,
         5: 0,
         6: 0,
-        7: 0,
-        8: 0
+        7: 0
       },
       turn: 'X'
     }
@@ -42,4 +41,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
+export default App;
