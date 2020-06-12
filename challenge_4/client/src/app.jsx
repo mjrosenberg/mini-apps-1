@@ -24,6 +24,7 @@ class App extends React.Component {
     }
     this.display = this.display.bind(this);
     this.checkRules = this.checkRules.bind(this);
+    this.reset = this.reset.bind(this);
   }
   componentDidMount(){
 
@@ -101,11 +102,11 @@ class App extends React.Component {
       startRow--;
       startCol++;
     }
-    console.log('pos diagonal starting from:', startRow, startCol);
+    //console.log('pos diagonal starting from:', startRow, startCol);
     while(startRow < 9 && startCol > 0) {
       var id = `${startRow}${startCol}`;
       curr = document.getElementById(id).innerText;
-      console.log(id, 'curr is', curr,'prev is', prev);
+      //console.log(id, 'curr is', curr,'prev is', prev);
       if (curr === prev && curr !== ''){
         inARow++;
       } else{
@@ -130,11 +131,11 @@ class App extends React.Component {
       startRow--;
       startCol--;
     }
-    console.log('neg diagonal starting from:', startRow, startCol);
+    //console.log('neg diagonal starting from:', startRow, startCol);
     while(startRow < 9 && startCol < 8) {
       var id = `${startRow}${startCol}`;
       curr = document.getElementById(id).innerText;
-      console.log(id, 'curr is', curr,'prev is', prev);
+      //console.log(id, 'curr is', curr,'prev is', prev);
       if (curr === prev && curr !== ''){
         inARow++;
       } else{
@@ -190,6 +191,22 @@ class App extends React.Component {
       return;
     }
   }
+  reset(){
+    console.log('reset triggered');
+    for (var row =1; row<9; row++){
+      for (var col = 1; col<8; col++){
+        var id = `${row}${col}`;
+        document.getElementById(id).innerText = '';
+        this.setState({
+          [col]: 9,
+          turn: 'X',
+          over: false,
+          message: '',
+          filled: 0
+        })
+      }
+    }
+  }
   render(){
     return(
       <div>
@@ -199,6 +216,7 @@ class App extends React.Component {
         </div>
         <div onClick={()=>{this.checkRules(8, 1);}}>Check Rules</div>
         <div>{this.state.message}</div>
+        <div onClick={this.reset}>Reset Game</div>
       </div>
     );
   }
